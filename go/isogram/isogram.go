@@ -1,27 +1,41 @@
 package isogram
 
-// Determine if a word or phrase is an isogram.
+import (
+	"strings"
+)
 
-// An isogram (also known as a "nonpattern word") is a word or phrase without a
-// repeating letter, however spaces and hyphens are allowed to appear multiple times.
-
-// Examples of isograms:
-
-// lumberjacks
-// background
-// downstream
-// six-year-old
-
-// The word isograms, however, is not an isogram, because the s repeats.
-
-func IsIsogram(word string) (int) {
+// IsIsogram is a function woo waa.
+func IsIsogram(word string) bool {
 	// declare empty arr
-	var arr []string
-	// go thru each char in str
-	for i := 0; i < len(word); i++ {
-		if arr.Con
+	if word == "" {
+		return true
 	}
-		// check if that char already exists in arr
-			// return False
-		// store the char in an arr
+	var letters []string
+
+	// initialize empty letters array
+	// for every character in the word
+	// 		go through every element in the array of letters
+	// 			if the character in the word already exists in letters array
+	// 				return false
+	// 		append the character in the word to the letters array
+
+	for i := 0; i < len(word); i++ {
+		char := strings.ToLower(string(word[i]))
+		// check if the letter is in the letters array already
+		for j := 0; j < len(letters); j++ {
+			letterChar := strings.ToLower(string(letters[j]))
+			if letterChar == char {
+				return false
+			}
+		}
+		if char == "-" || char == " " {
+			continue
+		}
+		letters = append(letters, char)
+	}
+	// check if that char already exists in arr
+	// return False
+	// store the char in an arr
+
+	return true
 }
